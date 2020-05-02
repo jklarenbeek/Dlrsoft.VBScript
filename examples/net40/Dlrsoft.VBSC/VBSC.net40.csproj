@@ -32,10 +32,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Dynamic">
-      <HintPath>..\..\src\library\net40\Microsoft.Dynamic.dll</HintPath>
+      <HintPath>..\..\..\src\library\net40\Microsoft.Dynamic.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Scripting">
-      <HintPath>..\..\src\library\net40\Microsoft.Scripting.dll</HintPath>
+      <HintPath>..\..\..\src\library\net40\Microsoft.Scripting.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting.Debugging">
+      <HintPath>..\..\..\src\library\net40\Microsoft.Scripting.Debugging.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -63,8 +66,8 @@
     <Content Include="test\while.vbs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Dlrsoft.VBScript\VBScript.net40.csproj">
-      <Project>{0846368D-EA96-4AC4-81AF-E4F9B78CE60B}</Project>
+    <ProjectReference Include="..\..\..\src\Dlrsoft.VBScript\VBScript.net40.csproj">
+      <Project>{0846368d-ea96-4ac4-81af-e4f9b78ce60b}</Project>
       <Name>VBScript.net40</Name>
     </ProjectReference>
   </ItemGroup>
