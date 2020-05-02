@@ -32,10 +32,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Dynamic">
-      <HintPath>..\library\net40\Microsoft.Dynamic.dll</HintPath>
+      <HintPath>..\..\src\library\net40\Microsoft.Dynamic.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Scripting">
-      <HintPath>..\library\net40\Microsoft.Scripting.dll</HintPath>
+      <HintPath>..\..\src\library\net40\Microsoft.Scripting.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
