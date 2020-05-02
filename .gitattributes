@@ -41,3 +41,5 @@
 *.asp text
 
 *.sln text eol=crlf merge=union 
+
+* text=auto
