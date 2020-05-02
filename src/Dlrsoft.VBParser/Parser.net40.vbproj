@@ -47,7 +47,7 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <OutputPath>..\bin\Debug\</OutputPath>
+    <OutputPath>..\bin\net40\Debug\</OutputPath>
     <DocumentationFile>Dlrsoft.VBParser.xml</DocumentationFile>
     <BaseAddress>285212672</BaseAddress>
     <ConfigurationOverrideFile>
@@ -68,7 +68,7 @@
     </CodeAnalysisRules>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <OutputPath>..\bin\Release40\</OutputPath>
+    <OutputPath>..\bin\net40\Release\</OutputPath>
     <DocumentationFile>Dlrsoft.VBParser.xml</DocumentationFile>
     <BaseAddress>285212672</BaseAddress>
     <ConfigurationOverrideFile>

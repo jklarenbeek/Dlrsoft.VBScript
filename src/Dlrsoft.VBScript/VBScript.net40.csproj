@@ -34,7 +34,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\bin\Debug\</OutputPath>
+    <OutputPath>..\bin\net40\Debug\</OutputPath>
     <DefineConstants>TRACE;DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -42,7 +42,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\bin\Release40\</OutputPath>
+    <OutputPath>..\bin\net40\Release\</OutputPath>
     <DefineConstants>TRACE;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -50,12 +50,12 @@
   <ItemGroup>
     <Reference Include="Microsoft.Dynamic, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\library\40\Microsoft.Dynamic.dll</HintPath>
+      <HintPath>..\library\net40\Microsoft.Dynamic.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Scripting, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\library\40\Microsoft.Scripting.dll</HintPath>
+      <HintPath>..\library\net40\Microsoft.Scripting.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Core" />
@@ -133,9 +133,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Parser\Parser.VS2013.vbproj">
+    <ProjectReference Include="..\Dlrsoft.VBParser\VBParser.net40.vbproj">
       <Project>{57A0B340-BDA4-4DE3-B449-52B8C51D84B8}</Project>
-      <Name>Parser.VS2013</Name>
+      <Name>VBParser.net40</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
