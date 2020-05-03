@@ -135,9 +135,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Dlrsoft.VBParser\VBParser.net40.vbproj">
+    <ProjectReference Include="..\Dlrsoft.VBParser\VBParser.net45.vbproj">
       <Project>{57A0B340-BDA4-4DE3-B449-52B8C51D84B8}</Project>
-      <Name>VBParser.net40</Name>
+      <Name>VBParser.net45</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

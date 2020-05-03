@@ -69,9 +69,9 @@
     <Content Include="test\while.vbs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\src\Dlrsoft.VBScript\VBScript.net40.csproj">
+    <ProjectReference Include="..\..\..\src\Dlrsoft.VBScript\VBScript.net45.csproj">
       <Project>{0846368d-ea96-4ac4-81af-e4f9b78ce60b}</Project>
-      <Name>VBScript.net40</Name>
+      <Name>VBScript.net45</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

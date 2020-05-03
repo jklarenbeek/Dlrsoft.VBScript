@@ -131,9 +131,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\src\Dlrsoft.VBScript\VBScript.net40.csproj">
+    <ProjectReference Include="..\..\..\src\Dlrsoft.VBScript\VBScript.net45.csproj">
       <Project>{0846368D-EA96-4AC4-81AF-E4F9B78CE60B}</Project>
-      <Name>VBScript.net40</Name>
+      <Name>VBScript.net45</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
