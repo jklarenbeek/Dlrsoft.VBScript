@@ -48,7 +48,7 @@
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <OutputPath>..\bin\net40\Debug\</OutputPath>
+    <OutputPath>..\bin\net45\Debug\</OutputPath>
     <DocumentationFile>Dlrsoft.VBParser.xml</DocumentationFile>
     <BaseAddress>285212672</BaseAddress>
     <ConfigurationOverrideFile>
@@ -70,7 +70,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <OutputPath>..\bin\net40\Release\</OutputPath>
+    <OutputPath>..\bin\net45\Release\</OutputPath>
     <DocumentationFile>Dlrsoft.VBParser.xml</DocumentationFile>
     <BaseAddress>285212672</BaseAddress>
     <ConfigurationOverrideFile>
