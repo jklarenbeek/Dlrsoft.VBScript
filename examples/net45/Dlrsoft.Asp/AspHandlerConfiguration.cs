@@ -9,6 +9,13 @@ namespace Dlrsoft.Asp
 {
     public class AspHandlerConfiguration
     {
+        static AspHandlerConfiguration()
+        {
+            Assemblies.Add(typeof(global::Dlrsoft.VBScript.Runtime.BuiltInFunctions).Assembly);
+
+            Trace = true;
+        }
+
         private static IList<Assembly> _assemblies;
 
         public static IList<Assembly> Assemblies
