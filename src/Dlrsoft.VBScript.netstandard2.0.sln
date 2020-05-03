@@ -2,15 +2,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VBScript", "VBScript\VBScript.csproj", "{0846368D-EA96-4AC4-81AF-E4F9B78CE60B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VBScript", "Dlrsoft.VBScript\VBScript.netstandard2.0.csproj", "{0846368D-EA96-4AC4-81AF-E4F9B78CE60B}"
 EndProject
-Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Parser", "Parser\Parser.vbproj", "{725E729F-FB07-404D-B070-5FC532DFAA89}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Parser", "Dlrsoft.Parser\VBParser.netstandard2.0.csproj", "{725E729F-FB07-404D-B070-5FC532DFAA89}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspClassicCore", "AspClassicCore\AspClassicCore.csproj", "{72F6D136-660E-4677-96B9-922353E2CB7A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspClassicCoreWeb", "AspClassicCoreWeb\AspClassicCoreWeb.csproj", "{C36B1749-8012-4E1C-8247-812D46FFB2FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspClassicCoreWeb", "..\examples\netcoreapp3.1\AspClassicCoreWeb\AspClassicCoreWeb.csproj", "{C36B1749-8012-4E1C-8247-812D46FFB2FB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Laboratory", "Laboratory\Laboratory.csproj", "{9BBC8CBD-F21C-41EA-8DBD-976348D2E7BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Laboratory", "..\examples\netcoreapp3.1\Laboratory\Laboratory.csproj", "{9BBC8CBD-F21C-41EA-8DBD-976348D2E7BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
