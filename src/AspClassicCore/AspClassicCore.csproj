@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\VBScript\VBScript.csproj" />
+    <ProjectReference Include="..\Dlrsoft.VBScript\VBScript.netstandard2.0.csproj" />
   </ItemGroup>
 
 </Project>

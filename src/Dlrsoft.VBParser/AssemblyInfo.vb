@@ -11,12 +11,21 @@
 Imports System.Reflection
 Imports System.Runtime.InteropServices
 
+#If Not (NETSTANDARD2_0) Then
+
 <Assembly: AssemblyTitle("VBScript.NET Parser")> 
 <Assembly: AssemblyDescription("VBScript.NET Parser")> 
 <Assembly: AssemblyCompany("DLRSoft")> 
-<Assembly: AssemblyCopyright("Copyright (C) Microsoft Corporation 2005 and DLRSoft 2009")> 
+<Assembly: AssemblyCopyright("Copyright (C) Microsoft Corporation 2005 and DLRSoft 2009")>
+
+#End If
+
 
 <Assembly: CLSCompliant(True)> 
-<Assembly: ComVisible(False)> 
+<Assembly: ComVisible(False)>
+
+#If Not (NETSTANDARD2_0) Then
 
 <Assembly: AssemblyVersion("0.7.*")> 
+
+#End If

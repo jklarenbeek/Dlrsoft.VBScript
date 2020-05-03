@@ -9,6 +9,8 @@ using Microsoft.Scripting.ComInterop;
 #else
 using System.Linq;
 using System.Linq.Expressions;
+#endif
+#if !NETSTANDARD2_0
 using Microsoft.Scripting.ComInterop;
 #endif
 using Debug = System.Diagnostics.Debug;
@@ -27,7 +29,7 @@ namespace Dlrsoft.VBScript.Binders
                    DynamicMetaObject target, DynamicMetaObject[] indexes,
                    DynamicMetaObject value, DynamicMetaObject errorSuggestion)
         {
-#if !SILVERLIGHT
+#if !SILVERLIGHT && !NETSTANDARD2_0
             // First try COM binding.
             DynamicMetaObject result;
             if (ComBinder.TryBindSetIndex(this, target, indexes, value, out result))

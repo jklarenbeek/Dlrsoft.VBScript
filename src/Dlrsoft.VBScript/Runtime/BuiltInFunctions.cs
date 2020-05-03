@@ -136,7 +136,7 @@ namespace Dlrsoft.VBScript.Runtime
 
             throw new ArgumentException("Expect numeric argument", "number");
         }
-#if !SILVERLIGHT
+#if !SILVERLIGHT && !NETSTANDARD2_0
         public static object CreateObject(string progId)
         {
             return Createobject(progId, null);
@@ -571,13 +571,13 @@ namespace Dlrsoft.VBScript.Runtime
 
         public static object GetLocale()
         {
-#if !SILVERLIGHT
+#if !SILVERLIGHT && NETSTANDARD2_0
             return System.Globalization.CultureInfo.CurrentCulture.LCID;
 #else
             return System.Globalization.CultureInfo.CurrentCulture.Name;
 #endif
         }
-#if !SILVERLIGHT
+#if !SILVERLIGHT && !NETSTANDARD2_0
         public static object GetObject(object pathname)
         {
             return GetObject(pathname, null);
@@ -617,7 +617,7 @@ namespace Dlrsoft.VBScript.Runtime
         {
             return DateAndTime.Hour(Convert.ToDateTime(time));
         }
-#if !SILVERLIGHT
+#if !SILVERLIGHT && !NETSTANDARD2_0
         public object InputBox(object prompt)
         {
             return InputBox(prompt, null, null, null, null);
@@ -749,7 +749,7 @@ namespace Dlrsoft.VBScript.Runtime
 
         public static object IsNumeric(object expression)
         {
-#if !SILVERLIGHT
+#if !SILVERLIGHT && NETSTANDARD2_0
             return Information.IsNumeric(expression);
 #else
             return IsNumericInternal(expression);
@@ -874,7 +874,7 @@ namespace Dlrsoft.VBScript.Runtime
         {
             return DateAndTime.MonthName(Convert.ToInt32(month), Convert.ToBoolean(abbreviate));
         }
-#if !SILVERLIGHT
+#if !SILVERLIGHT && !NETSTANDARD2_0
         public static object MsgBox(object prompt)
         {
             return MsgBox(prompt, BuiltInConstants.vbOKOnly);
@@ -938,7 +938,7 @@ namespace Dlrsoft.VBScript.Runtime
 
         public static object RGB(object red, object green, object blue)
         {
-#if !SILVERLIGHT
+#if !SILVERLIGHT && NETSTANDARD2_0
             return Information.RGB(Convert.ToInt32(red), Convert.ToInt32(green), Convert.ToInt32(blue));
 #else
             return System.Windows.Media.Color.FromArgb(255, Convert.ToByte(red), Convert.ToByte(green), Convert.ToByte(blue));
@@ -1007,7 +1007,7 @@ namespace Dlrsoft.VBScript.Runtime
 
         public static object SetLocale(object lcid)
         {
-#if !SILVERLIGHT
+#if !SILVERLIGHT && NETSTANDARD2_0
             int prevLcid = (int)GetLocale();
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo((int)lcid);
             return prevLcid;
@@ -1116,7 +1116,7 @@ namespace Dlrsoft.VBScript.Runtime
 
         public static object TypeName(object varname)
         {
-#if !SILVERLIGHT
+#if !SILVERLIGHT && NETSTANDARD2_0
             return Information.TypeName(varname);
 #else
             if (varname == null) return null;

@@ -9,6 +9,8 @@
 '
 
 Imports System.Globalization
+Imports System.IO
+Imports System.Text
 
 ''' <summary>
 ''' A lexical analyzer for Visual Basic .NET. It produces a stream of lexical tokens.
@@ -59,11 +61,11 @@ Public NotInheritable Class Scanner
         End Get
 
         Set(ByVal value As Integer)
-            If Value < 1 Then
+            If value < 1 Then
                 Throw New ArgumentException("Tabs cannot represent less than one space.")
             End If
 
-            _TabSpaces = Value
+            _TabSpaces = value
         End Set
     End Property
 

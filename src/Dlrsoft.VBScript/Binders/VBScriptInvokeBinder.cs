@@ -11,6 +11,8 @@ using Microsoft.Scripting.ComInterop;
 #else
 using System.Linq;
 using System.Linq.Expressions;
+#endif
+#if !NETSTANDARD2_0
 using Microsoft.Scripting.ComInterop;
 #endif
 using Dlrsoft.VBScript.Runtime;
@@ -28,7 +30,7 @@ namespace Dlrsoft.VBScript.Binders
                 DynamicMetaObject targetMO, DynamicMetaObject[] argMOs,
                 DynamicMetaObject errorSuggestion)
         {
-#if !SILVERLIGHT
+#if !SILVERLIGHT && !NETSTANDARD2_0
             // First try COM binding.
             DynamicMetaObject result;
 

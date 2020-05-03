@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AspClassicCore\AspClassicCore.csproj" />
+    <ProjectReference Include="..\..\..\src\AspClassicCore\AspClassicCore.csproj" />
   </ItemGroup>
 
 </Project>

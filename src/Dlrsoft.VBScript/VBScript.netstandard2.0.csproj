@@ -31,10 +31,6 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\Parser\Parser.vbproj" />
-  </ItemGroup>
-  
-  <ItemGroup>
     <Compile Remove="Runtime\VBScriptDlrScope.cs" />
     <Compile Remove="Runtime\VBScriptTraceCallbackListener.cs" />
   </ItemGroup>
@@ -46,6 +42,10 @@
   <ItemGroup>
     <PackageReference Include="DynamicLanguageRuntime" Version="1.2.3" />
     <PackageReference Include="System.CodeDom" Version="4.7.0" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Dlrsoft.VBParser\VBParser.netstandard2.0.vbproj" />
   </ItemGroup>
   
   <ItemGroup>
