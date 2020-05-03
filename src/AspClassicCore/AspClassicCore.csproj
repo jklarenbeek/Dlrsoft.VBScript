@@ -6,6 +6,8 @@
 
   <ItemGroup>
     <PackageReference Include="DynamicLanguageRuntime" Version="1.2.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="System.CodeDom" Version="4.7.0" />
   </ItemGroup>
 
