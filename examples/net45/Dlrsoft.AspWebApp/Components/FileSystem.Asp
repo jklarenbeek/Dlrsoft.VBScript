@@ -39,7 +39,7 @@ and Microsoft will not provide technical support for it.
 
 			'Map current path to physical path.
 
-			curDir = Server.MapPath("/components")
+			curDir = Server.MapPath("/Components")
 
 
 			'Create FileSytemObject component.
@@ -49,7 +49,7 @@ and Microsoft will not provide technical support for it.
 
 			'Create and write to a file.
 
-			Set objMyFile = objScriptObject.CreateTextFile(curDir + "\" + "MyTextFile.txt", FORWRITING)
+			Set objMyFile = objScriptObject.CreateTextFile(curDir + "\" + "FileSystem_TextFile.txt", FORWRITING)
 			
 			For x = 1 to 5
 				objMyFile.WriteLine "Line number " & x & " was written on " & now & "<br>"
@@ -60,7 +60,7 @@ and Microsoft will not provide technical support for it.
 		
 		<%
 			'Read from file and output to screen.
-			Set objMyFile = objScriptObject.OpenTextFile(curDir + "\" + "MyTextFile.txt", FORREADING)
+			Set objMyFile = objScriptObject.OpenTextFile(curDir + "\" + "FileSystem_TextFile.txt", FORREADING)
 			Response.Write objMyFile.ReadAll
 		%>
 

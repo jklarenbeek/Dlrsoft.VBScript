@@ -1,4 +1,4 @@
-<% @LANGUAGE="VBSCRIPT" 	%>
+<%@ LANGUAGE="VBSCRIPT" 	%>
 <% Option Explicit			%>
 <!--#INCLUDE FILE="adovbs.inc"-->
 <!--METADATA TYPE="typelib" 
