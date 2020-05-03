@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DynamicLanguageRuntime" Version="1.2.3" />
+    <PackageReference Include="System.CodeDom" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\VBScript\VBScript.csproj" />
+  </ItemGroup>
+
+</Project>

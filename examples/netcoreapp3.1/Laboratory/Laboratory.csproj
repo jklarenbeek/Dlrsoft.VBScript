@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworks>netcoreapp3.1;net48</TargetFrameworks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="test.asp" />
+    <None Remove="test.vbs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="test.vbs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="test.asp" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.CodeDom" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AspClassicCore\AspClassicCore.csproj" />
+  </ItemGroup>
+
+</Project>

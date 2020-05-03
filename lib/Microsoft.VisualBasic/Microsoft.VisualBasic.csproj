@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <ProjectGuid>{10C5DC96-BB33-4FE0-ADF3-02F7B3619815}</ProjectGuid>
+    <ApplicationVersion>10.0.4.0</ApplicationVersion>
+    <FileUpgradeFlags />
+    <UpgradeBackupLocation />
+    <AssemblyTitle>Microsoft.VisualBasic</AssemblyTitle>
+    <Company>Microsoft Corporation</Company>
+    <Product>Microsoft® .NET Framework</Product>
+    <Description>Microsoft.VisualBasic</Description>
+    <Copyright>© Microsoft Corporation. All rights reserved.</Copyright>
+    <Version>4.7.0-preview.18571.3+57358b7f7214c233e8397483a9afc1698ac00c5b</Version>
+    <AssemblyVersion>10.0.4.0</AssemblyVersion>
+    <FileVersion>4.7.18.57103</FileVersion>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+  </PropertyGroup>
+</Project>

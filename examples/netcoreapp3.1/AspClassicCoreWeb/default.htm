@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title></title>
+</head>
+<body>
+<p>This project contains some ASP Classic Compiler Samples Pages</p>
+<table border="1" cellspacing="3" celpadding="5">
+    <tr>
+        <td>Folder</td>
+        <td>File</td>
+        <td>Comments</td>
+    </tr>
+    <tr>
+        <td><a href="/Components">Components</a></td>
+        <td></td>
+        <td>IIS 5 Platform SDK Sample. Need to install the COM components. Components like 
+            BrowserCap will not work because it requires the COM+ comtext to accesses the 
+            Request object. </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><a href="/Components/FileSystem.asp">FileSystem.asp</a></td>
+        <td>Works without registering any component. Need to grant ASP worker process account read/write access to the directory.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><a href="/Components/ServerVariables.asp">ServerVariables.asp</a></td>
+        <td>Iterate through Request.ServerVariables</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><a href="/Components/SessionRead.asp">SessionRead.asp</a></td>
+        <td>Shows all current session variables with sessionid.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><a href="/Components/SessionWrite.asp">SessionWrite.asp</a></td>
+        <td>Show and manipulate all current session variables with sessionid.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><a href="/Components/SessionTest.asp">SessionTest.asp</a></td>
+        <td>Test whatever.</td>
+    </tr>
+    <tr>
+        <td><a href="/Database">Database</a></td>
+        <td></td>
+        <td>IIS 5 Platform SDK Sample. Some the Access samples tested. Make sure that the OLEDB provider is installed. Need read/write access to the access.mdb in the directory.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><a href="/Database/SimpleQuery.asp">SimpleQuery.asp</a></td>
+        <td>Using the local database Authors.mdb via ADODB. Showing a simple select query.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><a href="/Database/AddDelete.asp">AddDelete.asp</a></td>
+        <td>Using the local database Authors.mdb via ADODB. Adding and then deleting a record.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><a href="/Database/Update.asp">Update.asp</a></td>
+        <td>Using the local database Authors.mdb via ADODB. Updates an author.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><a href="/Database/LimitRows.asp">LimitRows.asp</a></td>
+        <td>Using the local database Authors.mdb via ADODB. Shows Paging with authors table.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><a href="/Database/MultiScrolling.asp">MultiScrolling.asp</a></td>
+        <td>Using the local database Authors.mdb via ADODB. Shows Paging with scrolling on authors table.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><a href="/Database/Blob.asp">Blob.asp</a></td>
+        <td>Using the local sqlserver instance with the pubs database via ADODB. Showing logo of pub_info ONLY if database service is available!</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><a href="/Database/StoredProcedures.asp">StoredProcedures.asp</a></td>
+        <td>Using the local sqlserver instance with the pubs database via ADODB. Call storedprocedure byroyalty ONLY if database service is available!</td>
+    </tr>
+    <tr>
+        <td><a href="/Simple">Simple</a></td>
+        <td></td>
+        <td>IIS 5 Platform SDK Sample. All the samples tested.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><a href="/Simple/Includes.asp">Includes.asp</a></td>
+        <td>Includes HeaderInfo.asp</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><a href="/Simple/Variables.asp">Variables.asp</a></td>
+        <td>Simple variable manipulation</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><a href="/Simple/Looping.asp">Looping.asp</a></td>
+        <td>For loop with multiple primitives</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><a href="/Simple/Conditional.asp">Conditional.asp</a></td>
+        <td>Uses a switch for days of Date()</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><a href="/Simple/Arrays.asp">Arrays.asp</a></td>
+        <td>Shows fixed and resizable arrays.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><a href="/Simple/Functions.asp">Functions.asp</a></td>
+        <td>Calls a function and sets a value</td>
+    </tr>
+    <tr>
+        <td><a href="/Primitives">test</a></td>
+        <td></td>
+        <td>Some small samples used during development.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><a href="/Primitives/BuiltinConstants.asp">BuiltinConstants.asp</a></td>
+        <td>Show Weekday constants</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><a href="/Primitives/byref.asp">byref.asp</a></td>
+        <td>Call subroutine in subroutine with value by reference(?)</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><a href="/Primitives/byref2.asp">byref2.asp</a></td>
+        <td>Call subroutine with value by reference(?)</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><a href="/Primitives/call.asp">call.asp</a></td>
+        <td>Using the CALL statement</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><a href="/Primitives/datatypes.asp">datatypes.asp</a></td>
+        <td>Testing VarType with literals</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><a href="/Primitives/datetest.asp">datetest.asp</a></td>
+        <td>Testing variety of Date and Time functions.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><a href="/Primitives/extension.asp">extension.asp</a></td>
+        <td>Testing a dotnet extension method</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><a href="/Primitives/forloop.asp">forloop.asp</a></td>
+        <td>Testing a for loop in a asp page</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><a href="/Primitives/if.asp">if.asp</a></td>
+        <td>Testing the if conditional</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><a href="/Primitives/ifnull.asp">ifnull.asp</a></td>
+        <td>Throws Exception since member EOF doesnt exist.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><a href="/Primitives/literals.asp">literals.asp</a></td>
+        <td>Tests number literals.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><a href="/Primitives/perftest.asp">perftest.asp</a></td>
+        <td>Iterates through 10 milion substractions of integer and additions of float.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><a href="/Primitives/perftest2.asp">perftest2.asp</a></td>
+        <td>Iterates through 10 milion substractions of integer and additions of float in a subroutine.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><a href="/Primitives/StringBuilder.asp">StringBuilder.asp</a></td>
+        <td>Imports dotnet System.Text.StringBuilder into asp classic page.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><a href="/Primitives/with.asp">with.asp</a></td>
+        <td>Tests the with keyword.</td>
+    </tr>
+</table>
+</body>
+</html>
