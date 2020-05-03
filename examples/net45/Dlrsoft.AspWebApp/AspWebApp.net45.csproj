@@ -31,7 +31,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -40,7 +40,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release</OutputPath>
+    <OutputPath>bin\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -133,13 +133,13 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Dlrsoft.Asp\Asp.net45.csproj">
-      <Project>{F076A2D0-5200-42D7-9AEA-9E1260EFB138}</Project>
-      <Name>Asp.net45</Name>
-    </ProjectReference>
+    <None Include="Properties\PublishProfiles\AspClassicCompiler.pubxml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\PublishProfiles\AspClassicCompiler.pubxml" />
+    <ProjectReference Include="..\Dlrsoft.Asp\Asp.net45.csproj">
+      <Project>{f076a2d0-5200-42d7-9aea-9e1260efb138}</Project>
+      <Name>Asp.net45</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
