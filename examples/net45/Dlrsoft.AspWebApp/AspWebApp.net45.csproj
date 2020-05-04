@@ -64,54 +64,54 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Components\ServerVariables.asp" />
-    <Content Include="Components\SessionRead.asp" />
-    <Content Include="Components\SessionTest.asp" />
-    <Content Include="Components\SessionWrite.asp" />
-    <Content Include="default.htm" />
-    <Content Include="Primitives\byref.asp" />
-    <Content Include="Primitives\byref2.asp" />
-    <Content Include="Primitives\call.asp" />
-    <Content Include="Primitives\BuiltinConstants.asp" />
-    <Content Include="Components\FileSystem.Asp" />
-    <Content Include="Primitives\datetest.asp" />
-    <Content Include="Primitives\extension.asp" />
-    <Content Include="Primitives\ifnull.asp" />
-    <Content Include="Primitives\imports.asp" />
-    <Content Include="Primitives\StringBuilder.asp" />
-    <Content Include="Primitives\with.asp" />
-    <Content Include="Database\AddDelete.asp" />
-    <Content Include="Database\adovbs.inc" />
-    <Content Include="Database\Authors.mdb">
+    <Content Include="wwwroot\Components\ServerVariables.asp" />
+    <Content Include="wwwroot\Components\SessionRead.asp" />
+    <Content Include="wwwroot\Components\SessionTest.asp" />
+    <Content Include="wwwroot\Components\SessionWrite.asp" />
+    <Content Include="wwwroot\default.htm" />
+    <Content Include="wwwroot\Primitives\byref.asp" />
+    <Content Include="wwwroot\Primitives\byref2.asp" />
+    <Content Include="wwwroot\Primitives\call.asp" />
+    <Content Include="wwwroot\Primitives\BuiltinConstants.asp" />
+    <Content Include="wwwroot\Components\FileSystem.Asp" />
+    <Content Include="wwwroot\Primitives\datetest.asp" />
+    <Content Include="wwwroot\Primitives\extension.asp" />
+    <Content Include="wwwroot\Primitives\ifnull.asp" />
+    <Content Include="wwwroot\Primitives\imports.asp" />
+    <Content Include="wwwroot\Primitives\StringBuilder.asp" />
+    <Content Include="wwwroot\Primitives\with.asp" />
+    <Content Include="wwwroot\Database\AddDelete.asp" />
+    <Content Include="wwwroot\Database\adovbs.inc" />
+    <Content Include="wwwroot\Database\Authors.mdb">
     </Content>
-    <Content Include="Database\Blob.Asp" />
-    <Content Include="Database\LimitRows.asp" />
-    <Content Include="Database\MultiScrolling.asp" />
-    <Content Include="Database\SimpleQuery.asp" />
-    <Content Include="Database\StoredProcedures.asp" />
-    <Content Include="Database\Update.asp" />
-    <Content Include="Primitives\perftest2.asp" />
-    <Content Include="Primitives\datatypes.asp" />
-    <Content Include="Primitives\forloop.asp" />
-    <Content Include="Primitives\function.asp" />
-    <Content Include="Primitives\if.asp" />
-    <Content Include="Primitives\literals.asp" />
-    <Content Include="Primitives\perftest.asp" />
-    <Content Include="Primitives\servervars.asp" />
-    <Content Include="Simple\Arrays.asp" />
-    <Content Include="Simple\Conditional.asp" />
-    <Content Include="Simple\Functions.asp" />
-    <Content Include="Simple\HeaderInfo.Asp" />
-    <Content Include="Simple\Includes.asp" />
-    <Content Include="Simple\Looping.asp" />
-    <Content Include="Simple\Variables.asp" />
-    <Content Include="Web.config" />
+    <Content Include="wwwroot\Database\Blob.Asp" />
+    <Content Include="wwwroot\Database\LimitRows.asp" />
+    <Content Include="wwwroot\Database\MultiScrolling.asp" />
+    <Content Include="wwwroot\Database\SimpleQuery.asp" />
+    <Content Include="wwwroot\Database\StoredProcedures.asp" />
+    <Content Include="wwwroot\Database\Update.asp" />
+    <Content Include="wwwroot\Primitives\perftest2.asp" />
+    <Content Include="wwwroot\Primitives\datatypes.asp" />
+    <Content Include="wwwroot\Primitives\forloop.asp" />
+    <Content Include="wwwroot\Primitives\function.asp" />
+    <Content Include="wwwroot\Primitives\if.asp" />
+    <Content Include="wwwroot\Primitives\literals.asp" />
+    <Content Include="wwwroot\Primitives\perftest.asp" />
+    <Content Include="wwwroot\Primitives\servervars.asp" />
+    <Content Include="wwwroot\Simple\Arrays.asp" />
+    <Content Include="wwwroot\Simple\Conditional.asp" />
+    <Content Include="wwwroot\Simple\Functions.asp" />
+    <Content Include="wwwroot\Simple\HeaderInfo.Asp" />
+    <Content Include="wwwroot\Simple\Includes.asp" />
+    <Content Include="wwwroot\Simple\Looping.asp" />
+    <Content Include="wwwroot\Simple\Variables.asp" />
+    <Content Include="wwwroot\Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="wwwroot\App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\AspClassicCompiler.pubxml" />
