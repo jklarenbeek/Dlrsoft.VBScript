@@ -9,7 +9,7 @@
 <%= WeekdayName(Weekday(DateSerial(1995, 6, 2))) %>
 <%= WeekdayName(Weekday(DateSerial(1997, 5, 5))) %>
 <%
-setlocale(4100)
+setlocale(1043)
 for i = 1 to 7
  Response.Write(weekdayname(i) & "<BR/>")
 next
