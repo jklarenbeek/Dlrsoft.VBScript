@@ -1,5 +1,4 @@
-﻿using Dlrsoft.VBScript.Runtime;
-using Microsoft.VisualBasic.CompilerService;
+﻿using Microsoft.VisualBasic.CompilerService;
 using Microsoft.VisualBasic.CompilerServices;
 using System;
 using System.Collections.Generic;

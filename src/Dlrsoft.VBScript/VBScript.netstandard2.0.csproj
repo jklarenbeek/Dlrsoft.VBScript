@@ -45,7 +45,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\Dlrsoft.VBParser\VBParser.netstandard2.0.vbproj" />
+    <ProjectReference Include="..\Dlrsoft.VBParser.CSharp\VBParser.CSharp.csproj" />
   </ItemGroup>
   
   <ItemGroup>

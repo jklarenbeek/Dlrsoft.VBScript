@@ -941,7 +941,7 @@ namespace Dlrsoft.VBScript.Compiler
             {
                 for (int i = ifBlock.ElseIfBlockStatements.Count - 1; i > -1; i--)
                 {
-                    VB.ElseIfBlockStatement elseifBock = (VB.ElseIfBlockStatement)ifBlock.ElseIfBlockStatements.get_Item(i);
+                    VB.ElseIfBlockStatement elseifBock = (VB.ElseIfBlockStatement)((IList<VB.Statement>)ifBlock.ElseIfBlockStatements)[i];
                     elseBlock = Expression.Condition(
                             WrapBooleanTest(GenerateExpr(elseifBock.ElseIfStatement.Expression, scope)),
                             GenerateBlockExpr(elseifBock.Statements, scope),
@@ -1000,11 +1000,11 @@ namespace Dlrsoft.VBScript.Compiler
             {
                 for (int i = selectBlock.CaseBlockStatements.Count - 1; i >= 0; i--)
                 {
-                    VB.CaseBlockStatement caseStmt = (VB.CaseBlockStatement)selectBlock.CaseBlockStatements.get_Item(i);
+                    VB.CaseBlockStatement caseStmt = (VB.CaseBlockStatement)((IList<VB.Statement>)selectBlock.CaseBlockStatements)[i];
                     Expression condition = null;
                     for (int j = caseStmt.CaseStatement.CaseClauses.Count - 1; j >= 0; j--)
                     {
-                        VB.RangeCaseClause caseClause = (VB.RangeCaseClause)caseStmt.CaseStatement.CaseClauses.get_Item(j);
+                        VB.RangeCaseClause caseClause = (VB.RangeCaseClause)((IList<VB.CaseClause>)caseStmt.CaseStatement.CaseClauses)[j];
                         //Expression oneCase = Expression.Equal(
                         //    tmp, 
                         //    Expression.Convert(
@@ -1611,7 +1611,7 @@ namespace Dlrsoft.VBScript.Compiler
                 foreach (var p in parms)
                 {
                     Type paramType;
-                    if (p.Modifiers != null && p.Modifiers.get_Item(0).ModifierType == Dlrsoft.VBScript.Parser.ModifierTypes.ByVal)
+                    if (p.Modifiers != null && ((IList<VB.Modifier>)p.Modifiers)[0].ModifierType == Dlrsoft.VBScript.Parser.ModifierTypes.ByVal)
                     {
                         paramType = typeof(object);
                     }

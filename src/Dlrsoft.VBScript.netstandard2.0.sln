@@ -1,16 +1,17 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VBScript.netstandard2.0", "Dlrsoft.VBScript\VBScript.netstandard2.0.csproj", "{0846368D-EA96-4AC4-81AF-E4F9B78CE60B}"
 EndProject
-Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "VBParser.netstandard2.0", "Dlrsoft.VBParser\VBParser.netstandard2.0.vbproj", "{725E729F-FB07-404D-B070-5FC532DFAA89}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspClassicCore", "AspClassicCore\AspClassicCore.csproj", "{72F6D136-660E-4677-96B9-922353E2CB7A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Laboratory", "..\examples\netcoreapp3.1\Laboratory\Laboratory.csproj", "{9BBC8CBD-F21C-41EA-8DBD-976348D2E7BF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspClassicCoreWeb", "..\examples\netcoreapp3.1\AspClassicCoreWeb\AspClassicCoreWeb.csproj", "{0260EE4F-5B79-48F2-A15B-8628DA8B2F46}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VBParser.CSharp", "Dlrsoft.VBParser.CSharp\VBParser.CSharp.csproj", "{CD82AAFF-F07B-4394-B69F-5E64F59C7D64}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,10 +23,6 @@ Global
 		{0846368D-EA96-4AC4-81AF-E4F9B78CE60B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0846368D-EA96-4AC4-81AF-E4F9B78CE60B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0846368D-EA96-4AC4-81AF-E4F9B78CE60B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{725E729F-FB07-404D-B070-5FC532DFAA89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{725E729F-FB07-404D-B070-5FC532DFAA89}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{725E729F-FB07-404D-B070-5FC532DFAA89}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{725E729F-FB07-404D-B070-5FC532DFAA89}.Release|Any CPU.Build.0 = Release|Any CPU
 		{72F6D136-660E-4677-96B9-922353E2CB7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{72F6D136-660E-4677-96B9-922353E2CB7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72F6D136-660E-4677-96B9-922353E2CB7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -38,6 +35,10 @@ Global
 		{0260EE4F-5B79-48F2-A15B-8628DA8B2F46}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0260EE4F-5B79-48F2-A15B-8628DA8B2F46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0260EE4F-5B79-48F2-A15B-8628DA8B2F46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD82AAFF-F07B-4394-B69F-5E64F59C7D64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD82AAFF-F07B-4394-B69F-5E64F59C7D64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD82AAFF-F07B-4394-B69F-5E64F59C7D64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD82AAFF-F07B-4394-B69F-5E64F59C7D64}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

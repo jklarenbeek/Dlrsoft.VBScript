@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using System.Text;
 using System.Dynamic;
 using Microsoft.Scripting.Hosting;
+using System.IO;
+using Dlrsoft.VBScript.Compiler;
+using Microsoft.Scripting;
+using Dlrsoft.VBScript.Runtime;
+using System.Linq;
 #if USE35
 using Microsoft.Scripting.Ast;
 #else

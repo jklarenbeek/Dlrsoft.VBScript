@@ -938,7 +938,7 @@ namespace Dlrsoft.VBScript.Runtime
 
         public static object RGB(object red, object green, object blue)
         {
-#if !SILVERLIGHT && NETSTANDARD2_0
+#if !SILVERLIGHT || NETSTANDARD2_0
             return Information.RGB(Convert.ToInt32(red), Convert.ToInt32(green), Convert.ToInt32(blue));
 #else
             return System.Windows.Media.Color.FromArgb(255, Convert.ToByte(red), Convert.ToByte(green), Convert.ToByte(blue));
