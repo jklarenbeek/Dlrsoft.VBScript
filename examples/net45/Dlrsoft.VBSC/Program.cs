@@ -41,8 +41,8 @@ namespace Dlrsoft.VBScript
 
             // Get a Sympl engine and run stuff ...
             ScriptEngine engine = dlrRuntime.GetEngine("vbscript");
-            //string filename = @"..\..\test\test.vbs";
-            string filename = Path.GetFullPath(args[0]);
+            string filename = Path.GetFullPath(@"../../test/array.vbs");
+            //string filename = Path.GetFullPath(args[0]);
             string sourceCode = File.ReadAllText(filename);
 
             VBScriptSourceMapper mapper = new VBScriptSourceMapper();
