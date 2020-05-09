@@ -18,7 +18,7 @@ namespace Dlrsoft.VBScript.Compiler
             int len = source.Length;
             while (start < len)
             {
-                int pos = source.IndexOf('\r', start);
+                int pos = source.IndexOfAny(new[] { '\r', '\n' }, start);
                 if (pos > -1)
                 {
                     lineCount++;
@@ -29,7 +29,7 @@ namespace Dlrsoft.VBScript.Compiler
                 }
 
                 start = pos + 1;
-                if (start < len && source[start] == '\n')
+                if (start < len && source[start - 1] == '\r' && source[start] == '\n')
                 {
                     start++;
                 }
@@ -56,13 +56,13 @@ namespace Dlrsoft.VBScript.Compiler
 
             while (start < len)
             {
-                int pos = source.IndexOf('\r', start);
+                int pos = source.IndexOfAny(new[] { '\r', '\n' }, start);
                 if (pos < 0)
                 {
                     break;
                 }
 
-                if (pos + 1 < len && source[pos + 1] == '\n')
+                if (pos + 1 < len && source[pos] == '\r' && source[pos + 1] == '\n')
                 {
                     pos++;
                 }

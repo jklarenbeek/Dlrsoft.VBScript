@@ -27,6 +27,9 @@ namespace Dlrsoft.VBScript.Compiler
         {
             int generatedStartLine = span.Start.Line;
             int index = _spans.BinarySearch(span, _comparer);
+            if (index < 0)
+                return new DocSpan("Unknown", span);
+
             SourceSpan containingSpan = (SourceSpan)_spans[index];
             DocSpan docSpan = _mappings[containingSpan];
 
