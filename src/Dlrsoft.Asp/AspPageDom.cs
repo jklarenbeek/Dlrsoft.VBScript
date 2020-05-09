@@ -159,7 +159,8 @@ namespace Dlrsoft.Asp
             int startIndex = _sb.Length;
             _curLine += lines;
             int endLine = _curLine;
-            _sb.AppendLine(contents);
+            _sb.Append(contents);
+            _sb.Append("\r\n");
             int endIndex = _sb.Length;
 
             int startColumn = 1;
