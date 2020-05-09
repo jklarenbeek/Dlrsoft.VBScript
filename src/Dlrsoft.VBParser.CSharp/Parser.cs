@@ -4965,8 +4965,6 @@ namespace Dlrsoft.VBScript.Parser
 
                 default:
                     {
-                    SyntaxError:
-                        ;
                         ReportSyntaxError(SyntaxErrorType.SyntaxError, Peek());
                         break;
                     }
@@ -5481,13 +5479,6 @@ namespace Dlrsoft.VBScript.Parser
             if (Terminator.Type == TokenType.Colon)
             {
                 if (blockType == TreeType.SubDeclaration || blockType == TreeType.FunctionDeclaration || blockType == TreeType.ConstructorDeclaration || blockType == TreeType.OperatorDeclaration || blockType == TreeType.GetAccessorDeclaration || blockType == TreeType.SetAccessorDeclaration || blockType == TreeType.AddHandlerAccessorDeclaration || blockType == TreeType.RemoveHandlerAccessorDeclaration || blockType == TreeType.RaiseEventAccessorDeclaration)
-
-
-
-
-
-
-
                 {
                     ReportSyntaxError(SyntaxErrorType.MethodBodyNotAtLineStart, Terminator.Span);
                 }
@@ -7592,8 +7583,8 @@ namespace Dlrsoft.VBScript.Parser
             }
 
             Declaration = new EnumValueDeclaration(Attributes, Name, EqualsLocation, Expression, SpanFrom(StartLocation), ParseTrailingComments());
+
         HaveStatement:
-            ;
             terminator = VerifyEndOfStatement();
             return Declaration;
         }

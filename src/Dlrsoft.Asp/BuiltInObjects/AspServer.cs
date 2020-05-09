@@ -1,7 +1,9 @@
 using System;
+using System.Linq;
 using System.Web;
 using System.Reflection;
 using ASPTypeLibrary;
+using System.Web.Configuration;
 
 namespace Dlrsoft.Asp.BuiltInObjects
 {
@@ -25,7 +27,12 @@ namespace Dlrsoft.Asp.BuiltInObjects
 
 		public object CreateObject(string literal)
 		{
-			//return _context.Server.CreateObject(literal);
+            // raise event handler, if handler returns object, return object here
+            object instance = ServerHooks.Instance.CreateObject(literal);
+            if (instance != null)
+                return instance;
+
+            //return _context.Server.CreateObject(literal);
             Type t = Type.GetTypeFromProgID(literal);
             if (t == null)
             {
