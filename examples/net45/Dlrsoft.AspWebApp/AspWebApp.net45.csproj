@@ -102,10 +102,12 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="App_Code\Hooks.cs" />
+    <Compile Include="App_Code\ADODB\Connection.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="App_Code\" />
+    <Folder Include="App_Code\ADODB\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\AspClassicCompiler.pubxml" />

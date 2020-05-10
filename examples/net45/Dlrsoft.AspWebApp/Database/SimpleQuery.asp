@@ -33,8 +33,8 @@
 			
 
 			
-			Set oConn = Server.CreateObject("ADODB.Connection")
-			oConn.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & filePath
+			Set oConn = Server.CreateObject("MSSQL.Connection")
+			oConn.Open "Data Source=192.168.1.200;Initial Catalog=Authors;User Id=sa;Password=circles-arrows;"
 			
 			
 			' Execute a SQL query and store the results
