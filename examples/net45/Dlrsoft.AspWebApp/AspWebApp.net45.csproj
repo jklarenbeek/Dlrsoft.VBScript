@@ -101,8 +101,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="App_Code\Hooks.cs" />
+    <Compile Include="App_Code\ServerHooksImpl.cs" />
     <Compile Include="App_Code\ADODB\Connection.cs" />
+    <Compile Include="App_Code\ADODB\RecordSet.cs" />
+    <Compile Include="App_Code\ADODB\ADODBHooks.cs" />
+    <Compile Include="App_Code\ADODBHooksImpl .cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

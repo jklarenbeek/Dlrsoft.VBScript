@@ -29,7 +29,7 @@ namespace Dlrsoft.Asp
                     hook = (T)Activator.CreateInstance(type);
             }
 
-            return hook;
+            return hook ?? new T();
         }
     }
 

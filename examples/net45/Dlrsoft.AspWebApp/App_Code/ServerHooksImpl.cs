@@ -7,7 +7,7 @@ namespace AspWebApp.App_Code
     {
         public override object CreateObject(string literal)
         {
-            if (literal == "MSSQL.Connection")
+            if (literal == "ADODB.Connection")
                 return new ADODB.Connection();
 
             return null;
