@@ -44,12 +44,12 @@ namespace Dlrsoft.VBScript
             string filename = Path.GetFullPath(@"../../test/array.vbs");
             //string filename = Path.GetFullPath(args[0]);
             string sourceCode = File.ReadAllText(filename);
-            string[] sourceCodeLines = sourceCode.Split('\n').Select(item => item.Trim('\r')).ToArray();
+            string[] sourceCodeLines = sourceCode.Split('\n').Select(item => item.Trim('\r', '\n')).ToArray();
 
             VBScriptSourceMapper mapper = new VBScriptSourceMapper();
             SourceSpan generatedSpan = new SourceSpan(
                 new SourceLocation(1, 1, 1),
-                new SourceLocation(sourceCode.Length, sourceCodeLines.Length, sourceCodeLines.Last().Length)
+                new SourceLocation(sourceCode.Length, sourceCodeLines.Length, sourceCodeLines.Last().Length + 1)
             );
             mapper.AddMapping(generatedSpan, new DocSpan(filename, generatedSpan));
 
