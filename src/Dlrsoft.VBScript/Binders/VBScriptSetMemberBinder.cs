@@ -91,7 +91,7 @@ namespace Dlrsoft.VBScript.Binders
                         BindingRestrictions.GetTypeRestriction(targetMO.Expression,
                                                                targetMO.LimitType),
                         typeof(MissingMemberException),
-                         "IDynObj member name conflict.");
+                        "cannot bind member, " + this.Name + ", on object " + targetMO.Value.ToString());
             }
         }
     }

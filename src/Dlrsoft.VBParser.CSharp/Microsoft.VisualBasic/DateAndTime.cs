@@ -316,5 +316,123 @@ namespace Microsoft.VisualBasic
 			}
 			return text;
 		}
-	}
+
+        public static int DatePart(DateInterval Interval, DateTime DateValue, FirstDayOfWeek FirstDayOfWeekValue = FirstDayOfWeek.Sunday, FirstWeekOfYear FirstWeekOfYearValue = FirstWeekOfYear.Jan1)
+        {
+            switch (Interval)
+            {
+                case DateInterval.Year:
+                    return CurrentCalendar.GetYear(DateValue);
+                case DateInterval.Month:
+                    return CurrentCalendar.GetMonth(DateValue);
+                case DateInterval.Day:
+                    return CurrentCalendar.GetDayOfMonth(DateValue);
+                case DateInterval.Hour:
+                    return CurrentCalendar.GetHour(DateValue);
+                case DateInterval.Minute:
+                    return CurrentCalendar.GetMinute(DateValue);
+                case DateInterval.Second:
+                    return CurrentCalendar.GetSecond(DateValue);
+                case DateInterval.Weekday:
+                    return Weekday(DateValue, FirstDayOfWeekValue);
+                case DateInterval.WeekOfYear:
+                    {
+                        DayOfWeek firstDayOfWeek = (DayOfWeek)((FirstDayOfWeekValue != 0) ? ((int)checked(FirstDayOfWeekValue - 1)) : ((int)Utils.GetCultureInfo().DateTimeFormat.FirstDayOfWeek));
+                        CalendarWeekRule rule = default(CalendarWeekRule);
+                        switch (FirstWeekOfYearValue)
+                        {
+                            case FirstWeekOfYear.System:
+                                rule = Utils.GetCultureInfo().DateTimeFormat.CalendarWeekRule;
+                                break;
+                            case FirstWeekOfYear.Jan1:
+                                rule = CalendarWeekRule.FirstDay;
+                                break;
+                            case FirstWeekOfYear.FirstFourDays:
+                                rule = CalendarWeekRule.FirstFourDayWeek;
+                                break;
+                            case FirstWeekOfYear.FirstFullWeek:
+                                rule = CalendarWeekRule.FirstFullWeek;
+                                break;
+                        }
+                        return CurrentCalendar.GetWeekOfYear(DateValue, rule, firstDayOfWeek);
+                    }
+                case DateInterval.Quarter:
+                    checked
+                    {
+                        return unchecked(checked(DateValue.Month - 1) / 3) + 1;
+                    }
+                case DateInterval.DayOfYear:
+                    return CurrentCalendar.GetDayOfYear(DateValue);
+                default:
+                    throw new ArgumentException(Utils.GetResourceString("Argument_InvalidValue1", "Interval"));
+            }
+        }
+        /// <summary>Returns an Integer value containing the specified component of a given Date value.</summary>
+        /// <returns>Returns an Integer value containing the specified component of a given Date value.</returns>
+        /// <param name="Interval">Required. DateInterval enumeration value or String expression representing the part of the date/time value you want to return.</param>
+        /// <param name="DateValue">Required. Date value that you want to evaluate.</param>
+        /// <param name="DayOfWeek">Optional. A value chosen from the FirstDayOfWeek enumeration that specifies the first day of the week. If not specified, FirstDayOfWeek.Sunday is used.</param>
+        /// <param name="WeekOfYear">Optional. A value chosen from the FirstWeekOfYear enumeration that specifies the first week of the year. If not specified, FirstWeekOfYear.Jan1 is used.</param>
+        /// <filterpriority>1</filterpriority>
+        /// <PermissionSet>
+        ///   <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode" />
+        /// </PermissionSet>
+        public static int DatePart(string Interval, object DateValue, FirstDayOfWeek DayOfWeek = FirstDayOfWeek.Sunday, FirstWeekOfYear WeekOfYear = FirstWeekOfYear.Jan1)
+        {
+            DateTime dateValue;
+            try
+            {
+                dateValue = Conversions.ToDate(DateValue);
+            }
+            catch (StackOverflowException ex)
+            {
+                throw ex;
+            }
+            catch (OutOfMemoryException ex2)
+            {
+                throw ex2;
+            }
+            catch (ThreadAbortException ex3)
+            {
+                throw ex3;
+            }
+            catch (Exception)
+            {
+                throw new InvalidCastException(Utils.GetResourceString("Argument_InvalidDateValue1", "DateValue"));
+            }
+            return DatePart(DateIntervalFromString(Interval), dateValue, DayOfWeek, WeekOfYear);
+        }
+        private static DateInterval DateIntervalFromString(string Interval)
+        {
+            if (Interval != null)
+            {
+                Interval = Interval.ToUpperInvariant();
+            }
+            switch (Interval)
+            {
+                case "YYYY":
+                    return DateInterval.Year;
+                case "Y":
+                    return DateInterval.DayOfYear;
+                case "M":
+                    return DateInterval.Month;
+                case "D":
+                    return DateInterval.Day;
+                case "H":
+                    return DateInterval.Hour;
+                case "N":
+                    return DateInterval.Minute;
+                case "S":
+                    return DateInterval.Second;
+                case "WW":
+                    return DateInterval.WeekOfYear;
+                case "W":
+                    return DateInterval.Weekday;
+                case "Q":
+                    return DateInterval.Quarter;
+                default:
+                    throw new ArgumentException(Utils.GetResourceString("Argument_InvalidValue1", "Interval"));
+            }
+        }
+    }
 }

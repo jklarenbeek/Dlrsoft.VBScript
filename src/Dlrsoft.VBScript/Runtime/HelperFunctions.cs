@@ -284,7 +284,7 @@ namespace Dlrsoft.VBScript.Runtime
                         }
                         else if (targetType == typeof(string))
                         {
-                            return ((string)left).Equals(right);
+                            return Convert.ToString(left).Equals(Convert.ToString(right));
                         }
                         else
                         {
@@ -320,7 +320,7 @@ namespace Dlrsoft.VBScript.Runtime
                         }
                         else if (targetType == typeof(string))
                         {
-                            return !((string)left).Equals(right);
+                            return !Convert.ToString(left).Equals(Convert.ToString(right));
                         }
                         else
                         {
@@ -355,7 +355,7 @@ namespace Dlrsoft.VBScript.Runtime
                     }
                     else if (targetType == typeof(string))
                     {
-                        int result = ((string)left).CompareTo(right);
+                        int result = Convert.ToString(left).CompareTo(Convert.ToString(right));
                         return (result > 0);
                     }
                     break;
@@ -382,7 +382,7 @@ namespace Dlrsoft.VBScript.Runtime
                     }
                     else if (targetType == typeof(string))
                     {
-                        int result = ((string)left).CompareTo(right);
+                        int result = Convert.ToString(left).CompareTo(Convert.ToString(right));
                         return (result >= 0);
                     }
                     break;
@@ -409,7 +409,7 @@ namespace Dlrsoft.VBScript.Runtime
                     }
                     else if (targetType == typeof(string))
                     {
-                        int result = ((string)left).CompareTo(right);
+                        int result = Convert.ToString(left).CompareTo(Convert.ToString(right));
                         return (result < 0);
                     }
                     break;
@@ -436,7 +436,7 @@ namespace Dlrsoft.VBScript.Runtime
                     }
                     else if (targetType == typeof(string))
                     {
-                        int result = ((string)left).CompareTo(right);
+                        int result = Convert.ToString(left).CompareTo(Convert.ToString(right));
                         return (result <= 0);
                     }
                     break;
@@ -477,7 +477,7 @@ namespace Dlrsoft.VBScript.Runtime
                     }
                     break;
             }
-            throw new ArgumentException(string.Format("Operation {0} between {1} and {2} is not implemeted.", op, ltype.Name, rtype.Name));
+            throw new ArgumentException(string.Format("Operation {0} between {1} and {2} is not implemented.", op, ltype.Name, rtype.Name));
         }
 
         private static bool CanConvert(Type fromType, Type toType)

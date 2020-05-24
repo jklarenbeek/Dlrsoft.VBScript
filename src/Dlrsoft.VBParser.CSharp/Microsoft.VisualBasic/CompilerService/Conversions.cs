@@ -8,7 +8,7 @@ using System.Threading;
 
 namespace Microsoft.VisualBasic.CompilerServices
 {
-	internal class Conversions
+	public class Conversions
 	{
 		/// <summary>Converts a string to a <see cref="T:System.Boolean" /> value.</summary>
 		/// <returns>A Boolean value. Returns False if the string is null; otherwise, True.</returns>

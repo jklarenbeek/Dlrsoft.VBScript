@@ -678,6 +678,8 @@ namespace Dlrsoft.VBScript.Runtime
 
             return false;
         }
+
+        public static Func<string, object> CreateObjectCallback = null;
     } // RuntimeHelpers
 
 } // namespace

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.VisualBasic;
+using Microsoft.VisualBasic.CompilerServices;
 #if USE35
 #else
 using System.Linq;
@@ -136,13 +137,25 @@ namespace Dlrsoft.VBScript.Runtime
 
             throw new ArgumentException("Expect numeric argument", "number");
         }
+#if NETSTANDARD2_0
+        public static object CreateObject(string progId)
+        {
+            Func<string, object> callback = RuntimeHelpers.CreateObjectCallback;
+            if (callback == null)
+                return null;
+
+            return callback.Invoke(progId);
+        }
+#endif
 #if !SILVERLIGHT && !NETSTANDARD2_0
         public static object CreateObject(string progId)
         {
-            return Createobject(progId, null);
+            Func<string, object> callback = RuntimeHelpers.CreateObjectCallback;
+            if (callback == null)
+                return Createobject(progId, null);
+
+            return callback.Invoke(progId);
         }
-
-
         public static object Createobject(string progId, string location)
         {
             Type type = Type.GetTypeFromProgID(progId);
@@ -351,58 +364,15 @@ namespace Dlrsoft.VBScript.Runtime
 
         public static int DatePart(string interval, object date)
         {
-            if (string.IsNullOrEmpty(interval))
-            {
-                throw new ArgumentException("interval is required.");
-            }
-
-            DateTime theDate;
-            if (date == null)
-            {
-                throw new ArgumentException("date is required.");
-            }
-            else if (date is DBNull)
-            {
-                throw new ArgumentException("date cannot be dbNull.");
-            }
-            else if (date is DateTime)
-            {
-                theDate = (DateTime)date;
-            }
-            else if (date is string)
-            {
-                theDate = DateTime.Parse((string)date);
-            }
-            else
-            {
-                throw new ArgumentException("date must be DateTime or string.");
-            }
-
-            switch (interval.ToLower())
-            {
-                case "yyyy":
-                    return theDate.Year;
-                case "q":
-                    return theDate.Month / 3;
-                case "m":
-                    return theDate.Month;
-                case "y":
-                    return theDate.DayOfYear;
-                case "d":
-                    return theDate.Day;
-                case "w":
-                    return (int)theDate.DayOfWeek;
-                case "ww":
-                    return theDate.Day / 7;
-                case "h":
-                    return theDate.Hour;
-                case "n":
-                    return theDate.Minute;
-                case "s":
-                    return theDate.Second;
-                default:
-                    throw new ArgumentException("invalid interval.");
-            }
+            return DateAndTime.DatePart(interval, date);
+        }
+        public static int DatePart(string interval, object date, int firstdayofweek)
+        {
+            return DateAndTime.DatePart(interval, date, (FirstDayOfWeek)firstdayofweek);
+        }
+        public static int DatePart(string interval, object date, int firstdayofweek, int firstweekofyear)
+        {
+            return DateAndTime.DatePart(interval, date, (FirstDayOfWeek)firstdayofweek, (FirstWeekOfYear)firstweekofyear);
         }
 
         public static DateTime DateSerial(int year, int month, int day)
@@ -516,7 +486,24 @@ namespace Dlrsoft.VBScript.Runtime
 
         public static object FormatDateTime(object date, object namedFormat)
         {
-            return Strings.FormatDateTime((DateTime)date, (DateFormat)namedFormat);
+            if (date == null)
+                return "";
+
+            if (date is string)
+            {
+                if (string.IsNullOrEmpty((string)date))
+                    return "";
+
+                return Strings.FormatDateTime(Conversions.ToDate(date), (DateFormat)namedFormat);
+            }
+            else if (date is DateTime)
+            {
+                return Strings.FormatDateTime((DateTime)date, (DateFormat)namedFormat);
+            }
+            else
+            {
+                return Strings.FormatDateTime(Conversions.ToDate(date), (DateFormat)namedFormat);
+            }
         }
 
         public static object FormatNumber(object expression)
@@ -744,7 +731,7 @@ namespace Dlrsoft.VBScript.Runtime
 
         public static object IsNull(object expression)
         {
-            return (expression is DBNull);
+            return (expression is null) || (expression is DBNull);
         }
 
         public static object IsNumeric(object expression)
@@ -802,7 +789,7 @@ namespace Dlrsoft.VBScript.Runtime
         {
             if (str == null || str is DBNull) return str;
 
-            return (Convert.ToString(str)).Substring(Convert.ToInt32(length));
+            return Strings.Left(Convert.ToString(str), Convert.ToInt32(length));
         }
 
         public static object Len(object str)
@@ -831,14 +818,14 @@ namespace Dlrsoft.VBScript.Runtime
         {
             if (str == null || str is DBNull) return str;
 
-            return Convert.ToString(str).Substring(Convert.ToInt32(start) - 1);
+            return Strings.Mid(Convert.ToString(str), Convert.ToInt32(start));
         }
 
         public static object Mid(object str, object start, object length)
         {
             if (str == null || str is DBNull) return str;
 
-            return Convert.ToString(str).Substring(Convert.ToInt32(start) - 1, Convert.ToInt32(length));
+            return Strings.Mid(Convert.ToString(str), Convert.ToInt32(start), Convert.ToInt32(length));
         }
 
         public static object MidB(object str, object start)
@@ -949,15 +936,7 @@ namespace Dlrsoft.VBScript.Runtime
         {
             if (str == null || str is DBNull) return str;
 
-            str = Convert.ToString(str);
-
-            int strLength = ((string)str).Length;
-            int retLength = Convert.ToInt32(length);
-
-            if (retLength > strLength)
-                return str;
-            else
-                return ((string)str).Substring(strLength - retLength, retLength);
+            return Strings.Right(Convert.ToString(str), Convert.ToInt32(length));
         }
 
         public static object Rnd()

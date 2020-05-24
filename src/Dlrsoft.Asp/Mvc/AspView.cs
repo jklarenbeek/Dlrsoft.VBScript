@@ -22,7 +22,7 @@ namespace Dlrsoft.Asp.Mvc
 {
     public class AspView : IView
     {
-        private static Dictionary<string, CompiledPage> _scriptCache = new Dictionary<string, CompiledPage>();
+        private static Dictionary<string, Lazy<CompiledPage>> _scriptCache = new Dictionary<string, Lazy<CompiledPage>>();
         private static AspHost aspHost;
         static AspView()
         {
@@ -49,12 +49,12 @@ namespace Dlrsoft.Asp.Mvc
         {
             string pagePath = viewContext.HttpContext.Server.MapPath(this.ViewPath);
 
-            CompiledPage cpage = null;
+            Lazy<CompiledPage> cpage = null;
             if (_scriptCache.ContainsKey(pagePath))
             {
                cpage = _scriptCache[pagePath];
                //don't use it if updated
-               if (cpage.CompileTime < File.GetLastWriteTime(pagePath))
+               if (cpage.Value.CompileTime < File.GetLastWriteTime(pagePath))
                    cpage = null;
             }
 
@@ -62,7 +62,7 @@ namespace Dlrsoft.Asp.Mvc
             {
                 try
                 {
-                    cpage = aspHost.ProcessPageFromFile(pagePath);
+                    cpage = new Lazy<CompiledPage>(() => aspHost.ProcessPageFromFile(pagePath));
                     _scriptCache[pagePath] = cpage;
                 }
                 catch (VBScriptCompilerException ex)
@@ -98,11 +98,11 @@ namespace Dlrsoft.Asp.Mvc
 
             //responseScope.SetVariable("err", new Microsoft.VisualBasic.ErrObject());
             //Used to get the literals
-            responseScope.SetVariable("literals", cpage.Literals);
+            responseScope.SetVariable("literals", cpage.Value.Literals);
 
             try
             {
-               object o = cpage.Code.Execute(responseScope);
+               object o = cpage.Value.Code.Execute(responseScope);
             }
             catch (Exception ex)
             {

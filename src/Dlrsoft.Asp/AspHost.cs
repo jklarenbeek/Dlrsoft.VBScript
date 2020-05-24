@@ -17,6 +17,8 @@ using Dlrsoft.VBScript.Compiler;
 using Dlrsoft.Asp.BuiltInObjects;
 using System.Configuration;
 using System.Web.Configuration;
+using System.Linq;
+using Dlrsoft.VBScript.Runtime;
 
 namespace Dlrsoft.Asp
 {
@@ -29,6 +31,32 @@ namespace Dlrsoft.Asp
 
         public AspHost(AspHostConfiguration config)
         {
+            if (RuntimeHelpers.CreateObjectCallback == null)
+            {
+                lock (typeof(AspHost))
+                {
+                    if (RuntimeHelpers.CreateObjectCallback == null) // prevent race condition
+                    {
+                        RuntimeHelpers.CreateObjectCallback = delegate (string literal)
+                        {
+                            // raise event handler, if handler returns object, return object here
+                            object instance = ServerHooks.Instance.CreateObject(literal);
+                            if (instance != null)
+                                return instance;
+
+                            //return _context.Server.CreateObject(literal);
+                            Type t = Type.GetTypeFromProgID(literal);
+                            if (t == null)
+                            {
+                                throw new Exception(string.Format("Cannot create server object ''{0}", literal));
+                            }
+
+                            return Activator.CreateInstance(t);
+                        };
+                    }
+                }
+            }
+
             _config = config;
 
             //Configuration configuration = WebConfigurationManager.OpenWebConfiguration("~");
@@ -56,11 +84,22 @@ namespace Dlrsoft.Asp
                 qualifiedname, "vbscript", new[] { "vbscript" }, new[] { ".vbs" }));
             _runtime = new ScriptRuntime(setup);
             //_runtime.LoadAssembly(typeof(global::Dlrsoft.VBScript.Runtime.BuiltInFunctions).Assembly);
+
+            List<Assembly> inject = ServerHooks.Instance.InjectClasses().Select(item => item.Type.Assembly).Distinct().ToList();
+            foreach (Assembly assembly in inject)
+                _runtime.LoadAssembly(assembly);
+
             if (config != null && config.Assemblies != null)
             {
+                HashSet<Assembly> injected = new HashSet<Assembly>(inject);
+
                 foreach (Assembly a in config.Assemblies)
                 {
-                    _runtime.LoadAssembly(a);
+                    if (!injected.Contains(a))
+                    {
+                        _runtime.LoadAssembly(a);
+                        injected.Add(a);
+                    }
                 }
             }
             _engine = _runtime.GetEngine("vbscript");

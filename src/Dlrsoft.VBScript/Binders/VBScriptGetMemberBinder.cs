@@ -37,7 +37,7 @@ namespace Dlrsoft.VBScript.Binders
                 return result;
             }
 #endif
-            // Defer if any object has no value so that we evaulate their
+            // Defer if any object has no value so that we evaluate their
             // Expressions and nest a CallSite for the InvokeMember.
             if (!targetMO.HasValue) return Defer(targetMO);
             // Find our own binding.
@@ -46,29 +46,34 @@ namespace Dlrsoft.VBScript.Binders
             var members = targetMO.LimitType.GetMember(this.Name, flags);
             if (members.Length == 1)
             {
-                return new DynamicMetaObject(
-                    RuntimeHelpers.EnsureObjectResult(
-                      Expression.MakeMemberAccess(
-                        Expression.Convert(targetMO.Expression,
-                                           members[0].DeclaringType),
-                        members[0])),
-                    // Don't need restriction test for name since this
-                    // rule is only used where binder is used, which is
-                    // only used in sites with this binder.Name.
-                    BindingRestrictions.GetTypeRestriction(targetMO.Expression,
-                                                           targetMO.LimitType));
-            }
-            else
-            {
-                return errorSuggestion ??
-                    RuntimeHelpers.CreateThrow(
-                        targetMO, null,
+                if (targetMO.LimitType == typeof(Microsoft.Scripting.ScopeStorage) && this.Name.ToLowerInvariant() == "item" && members[0] is PropertyInfo)
+                {
+
+                }
+                else
+                {
+                    return new DynamicMetaObject(
+                        RuntimeHelpers.EnsureObjectResult(
+                          Expression.MakeMemberAccess(
+                            Expression.Convert(targetMO.Expression,
+                                               members[0].DeclaringType),
+                            members[0])),
+                        // Don't need restriction test for name since this
+                        // rule is only used where binder is used, which is
+                        // only used in sites with this binder.Name.
                         BindingRestrictions.GetTypeRestriction(targetMO.Expression,
-                                                               targetMO.LimitType),
-                        typeof(MissingMemberException),
-                        "cannot bind member, " + this.Name +
-                            ", on object " + targetMO.Value.ToString());
+                                                               targetMO.LimitType));
+                }
             }
+
+            return errorSuggestion ??
+                RuntimeHelpers.CreateThrow(
+                    targetMO, null,
+                    BindingRestrictions.GetTypeRestriction(targetMO.Expression,
+                                                           targetMO.LimitType),
+                    typeof(MissingMemberException),
+                    "cannot bind member, " + this.Name +
+                        ", on object " + targetMO.Value.ToString());
         }
     }
 }

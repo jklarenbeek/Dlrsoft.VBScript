@@ -32,12 +32,11 @@ namespace Dlrsoft.Asp
 {
     public class AspHandler : IHttpHandler, IRequiresSessionState
     {
-        private Dictionary<string, CompiledPage> _scriptCache = null;
+        private static Dictionary<string, Lazy<CompiledPage>> _scriptCache = new Dictionary<string, Lazy<CompiledPage>>();
         private AspHost _aspHost = null;
 
         public AspHandler()
         {
-            _scriptCache = new Dictionary<string, CompiledPage>();
             AspHostConfiguration config = new AspHostConfiguration();
             config.Assemblies = AspHandlerConfiguration.Assemblies;
             config.Trace = AspHandlerConfiguration.Trace;
@@ -63,12 +62,12 @@ namespace Dlrsoft.Asp
         {
             string pagePath = context.Request.ServerVariables["PATH_TRANSLATED"];
 
-            CompiledPage cpage = null;
+            Lazy<CompiledPage> cpage = null;
             if (_scriptCache.ContainsKey(pagePath))
             {
                 cpage = _scriptCache[pagePath];
                 //don't use it if updated
-                if (cpage.CompileTime < File.GetLastWriteTime(pagePath))
+                if (cpage.Value.CompileTime < File.GetLastWriteTime(pagePath))
                     cpage = null;
             }
             
@@ -76,7 +75,7 @@ namespace Dlrsoft.Asp
             {
                 try
                 {
-                    cpage = _aspHost.ProcessPageFromFile(pagePath);
+                    cpage = new Lazy<CompiledPage>(() => _aspHost.ProcessPageFromFile(pagePath), true);
                     _scriptCache[pagePath] = cpage;
                 }
                 catch (VBScriptCompilerException ex)
@@ -97,11 +96,11 @@ namespace Dlrsoft.Asp
             pageScope.SetVariable("getobjectcontext", ctx);
             //responseScope.SetVariable("err", new Microsoft.VisualBasic.ErrObject());
             //Used to get the literals
-            pageScope.SetVariable("literals", cpage.Literals);
+            pageScope.SetVariable("literals", cpage.Value.Literals);
 
             try
             {
-                object o = cpage.Code.Execute(pageScope);
+                object o = cpage.Value.Code.Execute(pageScope);
             }
             catch (ThreadAbortException)
             {
@@ -113,6 +112,11 @@ namespace Dlrsoft.Asp
                 {
                     TraceHelper th = (TraceHelper)pageScope.GetVariable(VBScript.VBScript.TRACE_PARAMETER);
                     string source = string.Format("{0} ({1},{2})-({3},{4})", th.Source, th.StartLine, th.StartColumn, th.EndLine, th.EndColumn);
+
+                    //string errorFilename = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), @"ASPClassicError.txt");
+                    //string errorText = string.Format("Message: {0}\r\nSource: {1}\r\nStackTrace:\r\n{2}", ex.Message, source, ex.StackTrace);
+                    //File.WriteAllText(errorFilename, errorText, Encoding.ASCII);
+
                     throw new VBScriptRuntimeException(ex, source);
                 }
                 throw;

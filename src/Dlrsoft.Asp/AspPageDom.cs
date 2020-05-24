@@ -22,13 +22,19 @@ namespace Dlrsoft.Asp
         private string _virtualRootPath;
         private List<string> _literals = new List<string>();
         private StringBuilder _sb;
-        private VBScriptSourceMapper _mapper = new VBScriptSourceMapper();
+        private VBScriptSourceMapper _mapper;
         private int _curLine = 0;
 
         public AspPageDom()
         {
+            _mapper = new VBScriptSourceMapper();
             _sb = new StringBuilder();
             _literals = new List<string>();
+
+            foreach (TypeMapping type in ServerHooks.Instance.InjectClasses())
+            {
+                processPage($"InjectType{type.Name}", $"<% imports {type.Name} = {type.Type.FullName} %>\r\n", null);
+            }
         }
 
         /// <summary>
@@ -75,7 +81,7 @@ namespace Dlrsoft.Asp
             {
                 p2 = m.Index;
                 if (p2 - p1 > 0)
-                    appendBlock(pagePath, SourceUtil.GetSpan(lineRanges, p1, p2 - 1), GetListeral(aspFile, p1, p2), 1);
+                    appendBlock(pagePath, SourceUtil.GetSpan(lineRanges, p1, p2 - 1), GetLiteral(aspFile, p1, p2), 1);
                 p1 = m.Index + m.Length;
                 string value = m.Value;
                 string contents = m.Groups["contents"].Value;
@@ -105,10 +111,10 @@ namespace Dlrsoft.Asp
             }
             p2 = aspFile.Length;
             if (p2 - p1 > 0)
-                appendBlock(pagePath, SourceUtil.GetSpan(lineRanges, p1, p2 - 1), GetListeral(aspFile, p1, p2), 1);
+                appendBlock(pagePath, SourceUtil.GetSpan(lineRanges, p1, p2 - 1), GetLiteral(aspFile, p1, p2), 1);
         }
 
-        private string GetListeral(string aspFile, int p1, int p2)
+        private string GetLiteral(string aspFile, int p1, int p2)
         {
             _literals.Add(aspFile.Substring(p1, p2 - p1));
             return string.Format("response.Write(literals({0}))", _literals.Count - 1);

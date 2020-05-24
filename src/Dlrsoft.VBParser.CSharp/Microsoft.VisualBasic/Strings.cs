@@ -789,15 +789,12 @@ namespace Microsoft.VisualBasic
 		internal static string GetNumberFormatString(int NumDigitsAfterDecimal, TriState IncludeLeadingDigit, TriState UseParensForNegativeNumbers, TriState GroupDigits)
 		{
 			NumberFormatInfo numberFormatInfo = (NumberFormatInfo)Utils.GetCultureInfo().GetFormat(typeof(NumberFormatInfo));
-			switch (NumDigitsAfterDecimal)
-			{
-				case -1:
-					NumDigitsAfterDecimal = numberFormatInfo.NumberDecimalDigits;
-					break;
-				default:
-					throw new ArgumentException(Utils.GetResourceString("Argument_Range0to99_1", "NumDigitsAfterDecimal"));
-			}
-			if (GroupDigits == TriState.UseDefault)
+            if (NumDigitsAfterDecimal == -1)
+                NumDigitsAfterDecimal = numberFormatInfo.NumberDecimalDigits;
+            else if (NumDigitsAfterDecimal >= 100)
+                throw new ArgumentException(Utils.GetResourceString("Argument_Range0to99_1", "NumDigitsAfterDecimal"));
+
+            if (GroupDigits == TriState.UseDefault)
 			{
 				GroupDigits = ((numberFormatInfo.NumberGroupSizes != null && numberFormatInfo.NumberGroupSizes.Length != 0) ? TriState.True : TriState.False);
 			}

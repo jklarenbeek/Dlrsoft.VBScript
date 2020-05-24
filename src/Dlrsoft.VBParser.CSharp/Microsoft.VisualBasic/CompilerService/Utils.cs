@@ -162,7 +162,7 @@ namespace Microsoft.VisualBasic.CompilerService
             }
         }
 
-        private static Lazy<ResourceManager> m_VBAResourceManager = new Lazy<ResourceManager>(() => new ResourceManager("Microsoft.VisualBasic", Assembly.GetExecutingAssembly()), true);
+        private static Lazy<ResourceManager> m_VBAResourceManager = new Lazy<ResourceManager>(() => new ResourceManager("Dlrsoft.VBScript.Parser.Properties.Microsoft.VisualBasic", Assembly.GetExecutingAssembly()), true);
         internal static ResourceManager VBAResourceManager => m_VBAResourceManager.Value;
 
         internal static string GetResourceString(vbErrors resourceId)
@@ -178,7 +178,7 @@ namespace Microsoft.VisualBasic.CompilerService
             string text;
             try
             {
-                text = VBAResourceManager.GetString(resourceKey, GetCultureInfo());
+                text = VBAResourceManager.GetString(resourceKey);
                 if (text == null)
                 {
                     text = VBAResourceManager.GetString("ID95");
